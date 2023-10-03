@@ -3,7 +3,8 @@
     "beforeBuildCommand": "",
     "beforeDevCommand": "",
     "devPath": "../../assets",
-    "distDir": "../../assets"
+    "distDir": "../../assets",
+    "withGlobalTauri": true
   },
   "package": {
     "productName": "tauri-htmx-demo",
@@ -55,10 +56,11 @@
     "windows": [
       {
         "fullscreen": false,
-        "height": 600,
+        "height": 550,
         "resizable": true,
         "title": "Demo",
-        "width": 800
+        "width": 400,
+        "visible": false
       }
     ]
   }
