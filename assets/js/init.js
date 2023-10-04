@@ -1,17 +1,13 @@
 xhook.before(function (request, callback) {
-  if (request.url.match("/contact/")) {
+  if (request.url.startsWith("/")) {
     window.__TAURI__
-      .invoke("htmx", request)
-      .then((contents) => {
+      .invoke("htmx", { request })
+      .then((response) => {
         callback({
-          status: 200,
-          statusText: "OK",
-          text: contents,
-          data: contents,
-          headers: {
-            "content-length": contents.length,
-            "content-type": "text/html",
-          },
+          status: response.status,
+          text: response.body,
+          data: response.body,
+          headers: response.headers,
         });
       })
       .catch((error) => {
