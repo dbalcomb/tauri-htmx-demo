@@ -1,8 +1,7 @@
 use std::sync::{Arc, Mutex};
 
 use axum::Router;
-
-use crate::router::create_router;
+use backend::router::router;
 
 pub struct AppState {
     pub router: Arc<Mutex<Router>>,
@@ -11,7 +10,7 @@ pub struct AppState {
 impl Default for AppState {
     fn default() -> Self {
         Self {
-            router: Arc::new(Mutex::new(create_router())),
+            router: Arc::new(Mutex::new(router())),
         }
     }
 }

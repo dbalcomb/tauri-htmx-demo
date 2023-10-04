@@ -4,14 +4,14 @@ use askama::Template;
 use axum::extract::{Form, State};
 use serde::Deserialize;
 
-use crate::router::RouterState;
+use crate::state::AppState;
 
-pub async fn get(State(state): State<RouterState>) -> Result<Contact, String> {
+pub async fn get(State(state): State<AppState>) -> Result<Contact, String> {
     Ok(state.contact.lock().unwrap().clone())
 }
 
 pub async fn update(
-    State(state): State<RouterState>,
+    State(state): State<AppState>,
     Form(contact): Form<Contact>,
 ) -> Result<Contact, String> {
     *state.contact.lock().unwrap() = contact.clone();

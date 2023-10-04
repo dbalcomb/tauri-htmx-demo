@@ -1,11 +1,11 @@
 use askama::Template;
 use axum::extract::State;
 
-use crate::router::RouterState;
+use crate::state::AppState;
 
 use super::Contact;
 
-pub async fn get(State(state): State<RouterState>) -> Result<ContactForm, String> {
+pub async fn get(State(state): State<AppState>) -> Result<ContactForm, String> {
     let form = ContactForm {
         contact: state.contact.lock().unwrap().clone(),
     };

@@ -66,13 +66,11 @@ checksum = "a4668cab20f66d8d020e1fbc0ebe47217433c1b6c8f2040faf858554e394ace6"
 name = "app"
 version = "0.1.0"
 dependencies = [
- "askama",
- "askama_axum",
  "axum",
+ "backend",
  "http",
  "hyper",
  "serde",
- "serde_json",
  "tauri",
  "tauri-build",
  "tower-service",
@@ -221,6 +219,16 @@ dependencies = [
  "rustversion",
  "tower-layer",
  "tower-service",
+]
+
+[[package]]
+name = "backend"
+version = "0.1.0"
+dependencies = [
+ "askama",
+ "askama_axum",
+ "axum",
+ "serde",
 ]
 
 [[package]]
