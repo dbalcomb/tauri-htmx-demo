@@ -55,12 +55,14 @@
     },
     "windows": [
       {
+        "title": "Contacts",
         "fullscreen": false,
-        "height": 550,
         "resizable": true,
-        "title": "Demo",
+        "visible": false,
         "width": 400,
-        "visible": false
+        "minWidth": 400,
+        "height": 550,
+        "minHeight": 400
       }
     ]
   }

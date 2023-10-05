@@ -1,0 +1,48 @@
+<form id="content" hx-put="/contacts/{{ contact.id }}" hx-target="this" hx-swap="outerHTML">
+  <div class="flex flex-col overflow-hidden h-screen">
+    <header class="bg-white space-y-4 p-4 border-b border-b-slate-100">
+      <div class="flex items-center gap-2">
+        <h2 class="font-semibold mr-auto whitespace-nowrap text-ellipsis overflow-hidden">Edit {{ contact.first_name }} {{ contact.last_name }}</h2>
+        <button type="button" hx-get="/contacts/{{ contact.id }}" class="group flex items-center rounded-md bg-slate-100 hover:bg-slate-200 text-sm font-medium pl-2 pr-2 py-2 shadow-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <button type="button" hx-get="/contacts/{{ contact.id }}/delete" hx-target="#modal" hx-swap="innerHTML" hx-trigger="click" class="group flex items-center rounded-md text-white bg-red-500 hover:bg-red-400 text-sm font-medium pl-2 pr-2 py-2 shadow-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+          </svg>
+        </button>
+        <button type="submit" class="group flex items-center rounded-md bg-blue-500 hover:bg-blue-400 text-white text-sm font-medium pl-2 pr-3 py-2 shadow-sm">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-3 h-3 mr-2 ml-1">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
+          </svg>
+          <span>Save</span>
+        </button>
+      </div>
+    </header>
+    <section class="overflow-y-scroll pl-4 pr-4">
+      <input type="hidden" name="id" id="id" value="{{ contact.id }}" />
+      <dl class="divide-y divide-slate-100">
+        <div class="flex flex-col gap-4 py-4">
+          <dt class="text-sm font-medium leading-6 text-slate-900 mr-auto">First name</dt>
+          <dd class="text-sm leading-6 text-slate-700">
+            <input type="text" name="first_name" id="first_name" autocomplete="given-name" value="{{ contact.first_name }}" class="block w-full rounded-md border-0 outline-none px-3 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400" />
+          </dd>
+        </div>
+        <div class="flex flex-col gap-4 py-4">
+          <dt class="text-sm font-medium leading-6 text-slate-900 mr-auto">Last name</dt>
+          <dd class="text-sm leading-6 text-slate-700">
+            <input type="text" name="last_name" id="last_name" autocomplete="family-name" value="{{ contact.last_name }}" class="block w-full rounded-md border-0 outline-none px-3 py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400" />
+          </dd>
+        </div>
+        <div class="flex flex-col gap-4 py-4">
+          <dt class="text-sm font-medium leading-6 text-slate-900 mr-auto">Email</dt>
+          <dd class="text-sm leading-6 text-slate-700">
+            <input id="email" name="email" type="email" autocomplete="email" value="{{ contact.email }}" class="block w-full rounded-md border-0 px-3 outline-none py-1.5 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-blue-400" />
+          </dd>
+        </div>
+      </dl>
+    </section>
+  </div>
+</form>

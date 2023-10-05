@@ -1,7 +1,7 @@
 use std::sync::{Arc, Mutex};
 
 use axum::Router;
-use backend::router::router;
+use backend::routes::router;
 
 pub struct AppState {
     pub router: Arc<Mutex<Router>>,
